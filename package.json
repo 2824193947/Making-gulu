@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/2824193947/Making-gulu/issues"
   },
-  "homepage": "https://github.com/2824193947/Making-gulu#readme"
+  "homepage": "https://github.com/2824193947/Making-gulu#readme",
+  "dependencies": {
+    "vue": "^2.6.12"
+  }
 }
