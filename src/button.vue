@@ -1,6 +1,6 @@
 <template>
   <button class="g-button" :class="{[`icon-${iconPosition}`]: true}">
-    <g-icon :name="icon" v-if="icon"></g-icon>
+    <g-icon :name="icon" v-if="icon" class="icon"></g-icon>
     <div class="content">
       <slot></slot>
     </div>
@@ -24,7 +24,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 /*按钮样式*/
 .g-button {
   font-size: var(--font-size);
@@ -37,19 +37,15 @@ export default {
   justify-content: center;
   align-items: center;
   vertical-align: middle;
-
   &:hover {
     border-color: var(--boeder-color-hover);
   }
-
   &:active {
     background-color: var(--button-active-bgc);
   }
-
   &:focus {
     outline: none;
   }
-
   > .icon {
     order: 1;
     margin-right: .1em;
