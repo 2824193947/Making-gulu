@@ -12,7 +12,17 @@
 <script>
 export default {
   // 图标 图标位置
-  props: ['icon', 'iconPosition']
+  props: {
+    icon: {},
+    iconPosition: {
+      type: String,
+      default: 'left',
+      // 监听iconPosition的值, 防止用户乱填
+      validator (value) {
+        return !(value !== 'left' && value !== 'right');
+      }
+    }
+  }
 }
 </script>
 
