@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: "button",
+  name: "g-button",
   // 图标 图标位置
   props: {
     icon: {},
