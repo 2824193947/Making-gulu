@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/2824193947/Making-gulu#readme",
   "dependencies": {
+    "chai-spies": "^1.0.0",
     "vue": "^2.6.12",
     "vue-hot-reload-api": "^2.3.4"
   },

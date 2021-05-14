@@ -20,7 +20,10 @@ new Vue({
 
 // 单元测试 引入测试库
 import chai from 'chai'
+import spies from 'chai-spies'
+
 const expect = chai.expect
+chai.use(spies)
 
 // 测试icon
 {
@@ -102,12 +105,12 @@ const expect = chai.expect
       iconPosition: 'right'
     }
   })
+  const spy = chai.spy(function () {})
   vm.$mount()
-  vm.$on('click', function () {
-    expect(1).to.eq(1)
-  })
+  vm.$on('click', spy)
   // 获取组件按钮
   let button = vm.$el
   // 触发点击事件
   button.click()
+  expect(spy).to.have.been.called()
 }
