@@ -93,7 +93,7 @@ const expect = chai.expect
   vm.$el.remove()
   vm.$destroy()
 }
-// 测试按钮
+// 测试按钮 mock
 {
   const Constructor = Vue.extend(Button)
   const vm = new Constructor({
