@@ -6,6 +6,8 @@ addons:
 sudo: required
 install:
   - npm install
+script:
+  - npm test
 before_install:
   - "sudo chown root /opt/google/chrome/chrome-sandbox"
   - "sudo chmod 4755 /opt/google/chrome/chrome-sandbox"
