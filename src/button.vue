@@ -19,7 +19,13 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import Icon from './icon'
+
 export default {
+  components: {
+    'g-icon': Icon
+  },
   name: "g-button",
   // 图标 图标位置
   props: {
