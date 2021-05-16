@@ -50,10 +50,6 @@ export default {
   }
 }
 ```
-4. 引入 svg symbols
-```
-<script src="//at.alicdn.com/t/font_2544671_svb7b953ioh.js"></script>
-```
 ## 文档
 
 ## 提问
