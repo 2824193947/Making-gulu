@@ -18,13 +18,13 @@ import Icon from './icon'
 
 export default {
   name: "g-input",
-  emits: ['change'],
   components: {
     'icon': Icon
   },
   props: {
     value: {
-      type: String
+      type: String,
+      default: ''
     },
     disabled: {
       type: Boolean,

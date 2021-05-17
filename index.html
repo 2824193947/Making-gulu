@@ -43,8 +43,24 @@
 
 <body>
     <div id="app">
+      <g-row>
+        <g-col></g-col>
+        <g-col></g-col>
+      </g-row>
+      <g-row>
+        <g-col></g-col>
+        <g-col></g-col>
+        <g-col></g-col>
+        <g-col></g-col>
+      </g-row>
+      <g-row>
+        <g-col span="2"></g-col>
+        <g-col span="22"></g-col>
+      </g-row>
+
+      <hr>
       <div class="box">
-        <g-input value="张三" v-model="message"></g-input>
+        <g-input value="张三"></g-input>
         <g-input value="李四" disabled></g-input>
         <g-input value="王五" :readonly="true"></g-input>
       </div>
