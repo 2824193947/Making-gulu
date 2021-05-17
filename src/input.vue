@@ -8,7 +8,7 @@
     >
     <template v-if="error">
       <icon name="error" class="icon-error"></icon>
-      <span class="errorMessage">{{error}}</span>
+      <span class="errorMessage">{{ error }}</span>
     </template>
   </div>
 </template>
@@ -47,43 +47,52 @@ $border-color: #999;
 $border-color-hover: #666;
 $font-size: 14px;
 $border-radius: 4px;
-$box-shadow-color: rgba(0,0,0, 0.5);
+$box-shadow-color: rgba(0, 0, 0, 0.5);
 $red: #F1453D;
 .wrapper {
   display: inline-flex;
   align-items: center;
   font-size: $font-size;
+
   * {
     margin-right: 0.5em;
+
     &:last-child {
       margin-right: 0;
     }
   }
+
   > input {
     height: $height;
     border: 1px solid $border-color;
     border-radius: $border-radius;
     padding: 0 8px;
     font-size: inherit;
+
     &:hover {
       border-color: $border-color-hover;
     }
+
     &:focus {
       box-shadow: inset 0 1px 3px $box-shadow-color;
       outline: none;
     }
-    &[disabled]{
+
+    &[disabled] {
       border-color: #bbb;
       color: #bbb;
       cursor: not-allowed;
     }
+
     &.error {
       border-color: $red;
     }
   }
+
   .icon-error {
     fill: $red;
   }
+
   .errorMessage {
     color: $red;
   }
