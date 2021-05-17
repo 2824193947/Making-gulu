@@ -43,21 +43,35 @@
 
 <body>
     <div id="app">
-      <g-row>
-        <g-col></g-col>
-        <g-col></g-col>
-      </g-row>
-      <g-row>
-        <g-col></g-col>
-        <g-col></g-col>
-        <g-col></g-col>
-        <g-col></g-col>
-      </g-row>
-      <g-row>
-        <g-col span="2"></g-col>
-        <g-col span="22"></g-col>
-      </g-row>
-
+      <div style="border: 3px solid yellow">
+        <g-row gutter="20">
+          <g-col>1</g-col>
+          <g-col>1</g-col>
+        </g-row>
+        <g-row gutter="20">
+          <g-col>1</g-col>
+          <g-col>1</g-col>
+          <g-col>1</g-col>
+          <g-col>1</g-col>
+        </g-row>
+        <g-row gutter="20">
+          <g-col span="2">1</g-col>
+          <g-col span="22">1</g-col>
+        </g-row>
+        <g-row gutter="20">
+          <g-col span="2">1</g-col>
+          <g-col span="20" offset="2">1</g-col>
+        </g-row>
+        <g-row gutter="20">
+          <g-col span="4">1</g-col>
+          <g-col span="20">1</g-col>
+        </g-row>
+        <g-row gutter="20">
+          <g-col span="2" >1</g-col>
+          <g-col span="8" offset="2">1</g-col>
+          <g-col span="10" offset="2">1</g-col>
+        </g-row>
+      </div>
       <hr>
       <div class="box">
         <g-input value="张三"></g-input>

@@ -1,31 +1,46 @@
 <template>
-  <div class="col" :class="[`col-${span}`]">
-    <slot></slot>
+  <div class="col" :class="[span && `col-${span}`, offset && `offset-${offset}`]"
+       :style="{paddingLeft: gutter/2+'px', paddingRight: gutter/2+'px'}">
+    <div style="border: 1px solid green; height: 100px;">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "g-col",
+  data () {
+    return {
+      gutter: 0
+    }
+  },
   props: {
     span: {
       type: [Number, String]
-    }
+    },
+    offset: {
+      type: [Number, String]
+    },
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .col {
-  height: 100px;
   width: 50%;
-  background-color: grey;
-  border: 1px solid red;
 
+  // scss循环语句
   $class: col-;
   @for $n from 1 through 24 {
     &.#{$class}#{$n} {
       width: ($n / 24) * 100%;
+    }
+  }
+  $class: offset-;
+  @for $n from 1 through 24 {
+    &.#{$class}#{$n} {
+      margin-left: ($n / 24) * 100%;
     }
   }
 }
