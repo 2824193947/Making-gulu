@@ -1,6 +1,8 @@
 <template>
   <div class="col" :class="colClass" :style="colStyle">
+    <div style="border: 1px solid green; height: 50px;">
       <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -14,10 +16,8 @@ export default {
   },
   computed: {
     colClass () {
-      // return [span && `col-${span}`, offset && `offset-${offset}`]
-      // 因为span会识别为变量两个方法解决
-      return '[span && `col-${span}`, offset && `offset-${offset}`]'
-      // 或者声明这两个变量 let span, offset = this
+      let { span, offset } = this
+      return [span && `col-${span}`, offset && `offset-${offset}`]
 
     },
     colStyle () {
@@ -29,7 +29,8 @@ export default {
   },
   props: {
     span: {
-      type: [Number, String]
+      type: [Number, String],
+      default: 24
     },
     offset: {
       type: [Number, String]
@@ -40,8 +41,6 @@ export default {
 
 <style lang="scss" scoped>
 .col {
-  width: 50%;
-
   // scss循环语句
   $class: col-;
   @for $n from 1 through 24 {
