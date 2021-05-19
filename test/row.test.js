@@ -1,5 +1,3 @@
-import Button from "../src/button";
-
 const expect = chai.expect;
 import Vue from 'vue'
 import Row from '../src/row'
@@ -51,7 +49,6 @@ describe('row', () => {
           align: 'center'
         }
       }).$mount(div)
-      console.log(document)
       const element = vm.$el
       expect(window.getComputedStyle(element).justifyContent).to.equal('center')
       vm.$el.remove()

@@ -22,6 +22,7 @@ export default {
     },
     ipad: {
       type: Object,
+      // 判断
       validator ( value ) {
         let keys = Object.keys(value)
         let valid = true
@@ -77,12 +78,8 @@ export default {
     createdClass (spanAndOffset, device = '') {
       if (!spanAndOffset) {return []}
       let arr = []
-      if (spanAndOffset.span) {
-        arr.push(`col-${device}${spanAndOffset.span}`)
-      }
-      if (spanAndOffset.offset) {
-        arr.push(`offset-${device}${spanAndOffset.offset}`)
-      }
+      if (spanAndOffset.span) { arr.push(`col-${device}${spanAndOffset.span}`) }
+      if (spanAndOffset.offset) { arr.push(`offset-${device}${spanAndOffset.offset}`) }
       return arr
     }
   },
