@@ -39,75 +39,35 @@
           margin-top: 10px;
        }
     </style>
+    <style>
+      .test {
+        height: 100px;
+        width: 100%;
+        background-color: pink;
+        border: 1px solid grey;
+      }
+    </style>
 </head>
 
 <body>
     <div id="app">
 
-
-      <div style="border: 3px solid yellow">
-        <g-row gutter="20">
-          <g-col span="12">1</g-col>
-          <g-col span="12">1</g-col>
-        </g-row>
-        <g-row gutter="20">
-          <g-col span="6">1</g-col>
-          <g-col span="6">1</g-col>
-          <g-col span="6">1</g-col>
-          <g-col span="6">1</g-col>
-        </g-row>
-        <g-row gutter="20">
-          <g-col span="2">1</g-col>
-          <g-col span="22">1</g-col>
-        </g-row>
-        <g-row gutter="20">
-          <g-col
-              span="2"
-              :phone="{span: 24}"
-              :ipad="{span: 16}"
-              :narrow-pc="{span: 18}"
-              :wide-pc="{span: 22}"
-          ></g-col>
-          <g-col
-              span="20"
-              :phone="{span: 24}"
-              :ipad="{span: 8}"
-              :narrow-pc="{span: 6}"
-              :wide-pc="{span: 2}"
-          >1</g-col>
-        </g-row>
-        <g-row gutter="20">
-          <g-col span="4">1</g-col>
-          <g-col span="20">1</g-col>
-        </g-row>
-        <g-row gutter="20">
-          <g-col span="2" >1</g-col>
-          <g-col span="8" offset="2">1</g-col>
-          <g-col span="10" offset="2">1</g-col>
-        </g-row>
-        <g-row gutter="20">
-          <g-col span="12" align="left">
-            <g-row>
-              <g-col span="4">1</g-col>
-              <g-col span="4">1</g-col>
-              <g-col span="4">1</g-col>
-              <g-col span="4">1</g-col>
-              <g-col span="4">1</g-col>
-              <g-col span="4">1</g-col>
-            </g-row>
+      <div>
+        <g-row>
+          <g-col span="24" :pc="{span: 6}">
+            <div class="test"></div>
           </g-col>
-          <g-col span="12" align="right">
-            <g-row>
-              <g-col span="6">1</g-col>
-              <g-col span="6">1</g-col>
-              <g-col span="6">1</g-col>
-              <g-col span="6">1</g-col>
-            </g-row>
+          <g-col span="24" :pc="{span: 6}">
+            <div class="test"></div>
+          </g-col>
+          <g-col span="24" :pc="{span: 6}">
+            <div class="test"></div>
+          </g-col>
+          <g-col span="24" :pc="{span: 6}">
+            <div class="test"></div>
           </g-col>
         </g-row>
       </div>
-
-
 
       <hr>
       <div class="box">
