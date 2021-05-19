@@ -20,19 +20,6 @@ export default {
     offset: {
       type: [Number, String]
     },
-    phone: {
-      type: Object,
-      validator ( value ) {
-        let keys = Object.keys(value)
-        let valid = true
-        keys.forEach((key) => {
-          if (!['span', 'offset'].includes(key)) {
-            valid = false
-          }
-        })
-        return valid
-      }
-    },
     ipad: {
       type: Object,
       validator ( value ) {
@@ -46,7 +33,7 @@ export default {
         return valid
       }
     },
-    pc: {
+    narrowPc: {
       type: Object,
       validator ( value ) {
         let keys = Object.keys(value)
@@ -86,16 +73,29 @@ export default {
       }
     }
   },
+  methods: {
+    createdClass (spanAndOffset, device = '') {
+      if (!spanAndOffset) {return []}
+      let arr = []
+      if (spanAndOffset.span) {
+        arr.push(`col-${device}${spanAndOffset.span}`)
+      }
+      if (spanAndOffset.offset) {
+        arr.push(`offset-${device}${spanAndOffset.offset}`)
+      }
+      return arr
+    }
+  },
   computed: {
     colClass () {
-      let {span, offset, phone, ipad, pc, widePc} = this
+      let {span, offset, ipad, narrowPc, pc, widePc} = this
+      const createdClass = this.createdClass
       return [
-        span && `col-${span}`,
-        offset && `offset-${offset}`,
-        ...(phone ? [`col-phone-${phone.span}`, `offset-phone-${phone.offset}`] : []),
-        ...(ipad ? [`col-ipad-${ipad.span}`, `offset-ipad-${ipad.offset}`] : []),
-        ...(pc ? [`col-pc-${pc.span}`, `offset-pc-${pc.offset}`] : []),
-        ...(widePc ? [`col-wide-pc-${widePc.span}`, `offset-widePc-${widePc.offset}`] : [])
+        ...createdClass({span, offset}),
+        ...createdClass(ipad,'ipad-'),
+        ...createdClass(narrowPc,'narrowPc-'),
+        ...createdClass(pc,'pc-'),
+        ...createdClass(widePc,'widePc-')
       ]
     },
     colStyle () {
@@ -123,7 +123,7 @@ export default {
       margin-left: ($n / 24) * 100%;
     }
   }
-  @media (min-width: 577px) {
+  @media (min-width: 576px) {
     $class: col-ipad-;
     @for $n from 1 through 24 {
       &.#{$class}#{$n} {
@@ -131,6 +131,20 @@ export default {
       }
     }
     $class: offset-ipad-;
+    @for $n from 1 through 24 {
+      &.#{$class}#{$n} {
+        margin-left: ($n / 24) * 100%;
+      }
+    }
+  }
+  @media (min-width: 768px) {
+    $class: col-narrowPc-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class}#{$n} {
+        width: ($n / 24) * 100%;
+      }
+    }
+    $class: offset-narrowPc-pc-;
     @for $n from 1 through 24 {
       &.#{$class}#{$n} {
         margin-left: ($n / 24) * 100%;
@@ -151,7 +165,7 @@ export default {
       }
     }
   }
-  @media (min-width: 1201px) {
+  @media (min-width: 1200px) {
     $class: col-wide-pc-;
     @for $n from 1 through 24 {
       &.#{$class}#{$n} {
