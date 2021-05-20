@@ -2,7 +2,7 @@
 作者: 张凯宇
 
 [![Build Status](https://www.travis-ci.com/2824193947/Making-gulu.svg?branch=master)](https://www.travis-ci.com/2824193947/Making-gulu)
-![npm](https://img.shields.io/npm/dw/forcegulu)
+![npm](https://www.npmjs.com/package/forcegulu)
 ## 介绍
 
 这是我学习 Vue 过程中做的一个UI框架, 希望你体验一下
