@@ -35,16 +35,9 @@
         }
     </style>
     <style>
-      .box {
-          margin-top: 10px;
-       }
-    </style>
-    <style>
-      .test {
-        height: 100px;
-        width: 100%;
-        background-color: pink;
+      .demo {
         border: 1px solid grey;
+        min-height: 100px;
       }
     </style>
 </head>
@@ -52,42 +45,35 @@
 <body>
     <div id="app">
 
-      <div>
-        <g-row gutter="4">
-          <g-col span="5" offset="1" :pc="{span: 5}" :ipad="{span: 6}">
-            <div class="test"></div>
-          </g-col>
-          <g-col span="5" offset="1" :pc="{span: 5}" :ipad="{span: 6}">
-            <div class="test"></div>
-          </g-col>
-          <g-col span="5" offset="1" :pc="{span: 5}" :ipad="{span: 6}">
-            <div class="test"></div>
-          </g-col>
-          <g-col span="5" offset="1" :pc="{span: 5}" :ipad="{span: 6}">
-            <div class="test"></div>
-          </g-col>
-        </g-row>
-      </div>
+      <g-layout style="height: 100vh">
+        <g-header class="demo">header</g-header>
+        <g-layout>
+          <g-side class="demo" style="flex-grow: 1"></g-side>
+          <g-content class="demo">content</g-content>
+        </g-layout>
+        <g-footer class="demo">footer</g-footer>
+      </g-layout>
 
-      <hr>
-      <div class="box">
-        <g-input value="张三"></g-input>
-        <g-input value="李四" disabled></g-input>
-        <g-input value="王五" :readonly="true"></g-input>
-      </div>
-      <div class="box">
-        <g-input value="张" error="姓名不少于两个字"></g-input>
-      </div>
-      <div class="box">
-        <g-button :loading="loading1" @click="loading1 = !loading1">按钮</g-button>
-        <g-button icon="settings" icon-position="left" :loading="loading2" @click="loading2 = !loading2">按钮</g-button>
-        <g-button icon="settings" icon-position="right" :loading="loading3" @click="loading3 = !loading3">按钮</g-button>
-        <g-button-group>
-          <g-button icon="left" icon-position="left">下一页</g-button>
-          <g-button>更多</g-button>
-          <g-button icon="right" icon-position="right">上一页</g-button>
-        </g-button-group>
-      </div>
+
+
+<!--      <div class="box">-->
+<!--        <g-input value="张三"></g-input>-->
+<!--        <g-input value="李四" disabled></g-input>-->
+<!--        <g-input value="王五" :readonly="true"></g-input>-->
+<!--      </div>-->
+<!--      <div class="box">-->
+<!--        <g-input value="张" error="姓名不少于两个字"></g-input>-->
+<!--      </div>-->
+<!--      <div class="box">-->
+<!--        <g-button :loading="loading1" @click="loading1 = !loading1">按钮</g-button>-->
+<!--        <g-button icon="settings" icon-position="left" :loading="loading2" @click="loading2 = !loading2">按钮</g-button>-->
+<!--        <g-button icon="settings" icon-position="right" :loading="loading3" @click="loading3 = !loading3">按钮</g-button>-->
+<!--        <g-button-group>-->
+<!--          <g-button icon="left" icon-position="left">下一页</g-button>-->
+<!--          <g-button>更多</g-button>-->
+<!--          <g-button icon="right" icon-position="right">上一页</g-button>-->
+<!--        </g-button-group>-->
+<!--      </div>-->
     </div>
 
     <script src="./src/app.js"></script>
