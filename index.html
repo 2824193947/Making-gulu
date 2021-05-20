@@ -27,7 +27,7 @@
         }
 
         #app {
-            margin: 20px;
+            margin: 0px;
         }
 
         body {
@@ -35,9 +35,17 @@
         }
     </style>
     <style>
-      .demo {
-        border: 1px solid grey;
-        min-height: 100px;
+      .side {
+        background: #333;
+        width: 200px;
+      }
+      .header {
+        background: #999;
+        height: 100px;
+      }
+      .footer {
+        background: #888888;
+        height: 100px;
       }
     </style>
 </head>
@@ -46,12 +54,14 @@
     <div id="app">
 
       <g-layout style="height: 100vh">
-        <g-header class="demo">header</g-header>
+        <g-header>header</g-header>
         <g-layout>
-          <g-side class="demo" style="flex-grow: 1"></g-side>
-          <g-content class="demo">content</g-content>
+          <g-side>side</g-side>
+            <g-layout>
+            <g-content>content</g-content>
+            <g-footer>footer</g-footer>
+          </g-layout>
         </g-layout>
-        <g-footer class="demo">footer</g-footer>
       </g-layout>
 
 
