@@ -10,6 +10,7 @@ import Footer from "./footer";
 import Layout from "./layout";
 import Side from "./side"
 import Header from "./header"
+import plugin from "./plugin";
 
 // 注册全局组件
 Vue.component('g-button', Button)
@@ -23,6 +24,7 @@ Vue.component('g-footer', Footer)
 Vue.component('g-layout', Layout)
 Vue.component('g-header', Header)
 Vue.component('g-side', Side)
+Vue.use(plugin)
 
 new Vue({
   el: '#app',
@@ -34,6 +36,9 @@ new Vue({
   methods: {
     inputChange () {
       console.log(1)
+    },
+    showToast () {
+      this.$toast('点啦')
     }
   }
 })
