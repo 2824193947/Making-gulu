@@ -1,12 +1,71 @@
 <template>
-  <div class="toast">
-    <slot></slot>
-  </div>
+  <transition name="toast">
+    <div class="toast" ref="toast">
+      <div class="message">
+        <slot v-if="!enableHtml"></slot>
+        <div v-html="$slots.default" v-else></div>
+      </div>
+      <div class="line" ref="line"></div>
+      <span v-if="closeButton" class="close" @click="onClickClose">{{closeButton.text}}</span>
+    </div>
+  </transition>
 </template>
 
 <script>
 export default {
-  name: "g-toast"
+  name: "g-toast",
+  props: {
+    autoClose: {
+      type: Boolean,
+      default: true
+    },
+    autoDelay: {
+      type: Number,
+      default: 1
+    },
+    closeButton: {
+      type: Object,
+      default () {
+        return { text: '关闭', callback: undefined }
+      }
+    },
+    // 是否支持携带html的字符串(为了学习,扩展的功能)
+    enableHtml: {
+      type: Boolean
+    }
+  },
+  mounted () {
+    this.updateStyle()
+    this.executeAutoClose()
+  },
+  methods: {
+    updateStyle() {
+      this.$nextTick(() =>{
+        this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`
+      })
+    },
+    // 自动关闭
+    executeAutoClose () {
+      if (this.autoClose) {
+        setTimeout(() => {
+          this.close()
+        },this.autoDelay*1000)
+      }
+    },
+    // 打扫战场
+    close () {
+      this.$el.remove()
+      this.$destroy()
+    },
+    // 点击关闭
+    onClickClose () {
+      this.close()
+      // 有回调调用回调
+      if (this.closeButton.callback && typeof this.closeButton.callback === 'function') {
+        this.closeButton.callback()
+      }
+    }
+  }
 }
 </script>
 
@@ -17,18 +76,33 @@ $bg-color: rgba(0,0,0,0.74);
 
 .toast {
   position: fixed;
-  top: 0;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
   padding: 0 16px;
-  height: $toast-height;
+  min-height: $toast-height;
   line-height: 1.8;
   background: $bg-color;
   border-radius: 4px;
   box-shadow: 0 0 3px 0 rgba(0,0,0,0.5);
   font-size: $font-size;
   color: white;
+  .close {
+    padding-left: 16px;
+    flex-shrink: 0;
+    color: #bbbbbb;
+    cursor: pointer;
+  }
+  .message {
+    padding: 4px 0;
+  }
+}
+.line {
+  height: 100%;
+  border-left: 1px solid #666;
+  flex-shrink: 0;
+  margin-left: 32px;
 }
 </style>

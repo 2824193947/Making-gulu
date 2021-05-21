@@ -38,7 +38,7 @@ new Vue({
       console.log(1)
     },
     showToast () {
-      this.$toast('点啦')
+      this.$toast('点啦点啦点啦点啦');
     }
   }
 })
