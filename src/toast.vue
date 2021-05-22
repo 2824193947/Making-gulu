@@ -66,6 +66,7 @@ export default {
     // 打扫战场
     close () {
       this.$el.remove()
+      this.$emit('close')
       this.$destroy()
     },
     // 点击关闭
