@@ -40,6 +40,7 @@ new Vue({
     showToast () {
       this.$toast('点啦点啦点啦点啦',{
       });
+      console.log(111)
     }
   }
 })

@@ -75,7 +75,7 @@
         <g-input value="张" error="姓名不少于两个字"></g-input>
       </div>
       <div class="box">
-        <g-button :loading="loading1" @click="loading1 = !loading1; showToast()">按钮</g-button>
+        <g-button :loading="loading1" v-on:click="loading1 = !loading1; showToast()">按钮</g-button>
         <g-button icon="settings" icon-position="left" :loading="loading2" @click="loading2 = !loading2">按钮</g-button>
         <g-button icon="settings" icon-position="right" :loading="loading3" @click="loading3 = !loading3">按钮</g-button>
         <g-button-group>
