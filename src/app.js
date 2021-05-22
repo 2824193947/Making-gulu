@@ -39,8 +39,9 @@ new Vue({
     },
     showToast () {
       this.$toast('点啦点啦点啦点啦',{
+        position: 'bottom',
+        autoClose: 1.5
       });
-      console.log(111)
     }
   }
 })

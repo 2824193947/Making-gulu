@@ -69,7 +69,7 @@ describe('Input', () => {
         const callback = sinon.fake()
         vm.$on(item, callback)
         // 触发input的change事件
-        var event = new Event(item)
+        let event = new Event(item)
         Object.defineProperty(event, 'target', {
           value: {value: 'hi'}, enumerable: true
         })

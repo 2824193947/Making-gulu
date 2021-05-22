@@ -13,11 +13,9 @@ install (vue, options) {
       }
       currentToast = createdToast({
         message,
-        prototype: toastOptions,
+        propsData: toastOptions,
         vue,
-        onClose: () => {
-          currentToast = null
-        }
+        onClose: () => { currentToast = null }
       })
     }
   }

@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper" :class="toastClass">
-      <div class="toast" ref="toastRef" >
+      <div class="toast" ref="toastRef">
         <div class="message">
           <slot v-if="!enableHtml"></slot>
           <div v-html="$slots.default" v-else></div>
@@ -16,12 +16,11 @@ export default {
   name: "g-toast",
   props: {
     autoClose: {
-      type: Boolean,
-      default: true
-    },
-    autoDelay: {
-      type: Number,
-      default: 1.5
+      type: [Boolean, Number],
+      default: 2,
+      validator(value) {
+        return value === false || typeof value === 'number';
+      }
     },
     closeButton: {
       type: Object,
@@ -43,8 +42,8 @@ export default {
     }
   },
   mounted () {
-    this.updateStyle()
     this.executeAutoClose()
+    this.updateStyle()
   },
   computed: {
     toastClass () {
@@ -62,7 +61,7 @@ export default {
       if (this.autoClose) {
         setTimeout(() => {
           this.close()
-        },this.autoDelay*1000)
+        },this.autoClose*1000)
       }
     },
     // 打扫战场
