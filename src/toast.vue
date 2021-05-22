@@ -15,7 +15,7 @@ export default {
   props: {
     autoClose: {
       type: Boolean,
-      default: false
+      default: true
     },
     autoDelay: {
       type: Number,
