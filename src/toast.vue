@@ -1,14 +1,12 @@
 <template>
-  <transition name="toast">
-    <div class="toast" ref="toast">
+    <div class="toast" ref="toast" :class="toastClass">
       <div class="message">
         <slot v-if="!enableHtml"></slot>
         <div v-html="$slots.default" v-else></div>
       </div>
       <div class="line" ref="line"></div>
-      <span v-if="closeButton" class="close" @click="onClickClose">{{closeButton.text}}</span>
+      <div v-if="closeButton" class="close" @click="onClickClose">{{closeButton.text}}</div>
     </div>
-  </transition>
 </template>
 
 <script>
@@ -17,11 +15,11 @@ export default {
   props: {
     autoClose: {
       type: Boolean,
-      default: true
+      default: false
     },
     autoDelay: {
       type: Number,
-      default: 1
+      default: 1.5
     },
     closeButton: {
       type: Object,
@@ -32,11 +30,24 @@ export default {
     // 是否支持携带html的字符串(为了学习,扩展的功能)
     enableHtml: {
       type: Boolean
+    },
+    // 位置
+    position: {
+      type: String,
+      default: 'top',
+      validator (value) {
+        return ['top', 'middle', 'bottom'].indexOf(value) >= 0
+      }
     }
   },
   mounted () {
     this.updateStyle()
     this.executeAutoClose()
+  },
+  computed: {
+    toastClass () {
+      return `position-${this.position}`
+    }
   },
   methods: {
     updateStyle() {
@@ -76,9 +87,7 @@ $bg-color: rgba(0,0,0,0.74);
 
 .toast {
   position: fixed;
-  top: 10px;
   left: 50%;
-  transform: translateX(-50%);
   display: flex;
   align-items: center;
   padding: 0 16px;
@@ -98,11 +107,23 @@ $bg-color: rgba(0,0,0,0.74);
   .message {
     padding: 4px 0;
   }
-}
-.line {
-  height: 100%;
-  border-left: 1px solid #666;
-  flex-shrink: 0;
-  margin-left: 32px;
+  .line {
+    height: 100%;
+    border-left: 1px solid #666;
+    flex-shrink: 0;
+    margin-left: 32px;
+  }
+  &.position-top {
+    top: 5px;
+    transform: translateX(-50%);
+  }
+  &.position-bottom {
+    bottom: 5px;
+    transform: translateX(-50%);
+  }
+  &.position-middle {
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+  }
 }
 </style>
