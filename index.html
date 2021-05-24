@@ -53,39 +53,25 @@
 <body>
     <div id="app">
 
-<!--      <g-layout style="height: 100vh">-->
-<!--        <g-header>header</g-header>-->
-<!--        <g-layout>-->
-<!--          <g-side>side</g-side>-->
-<!--            <g-layout>-->
-<!--            <g-content>content</g-content>-->
-<!--            <g-footer>footer</g-footer>-->
-<!--          </g-layout>-->
-<!--        </g-layout>-->
-<!--      </g-layout>-->
-
-
-
-      <div class="box">
-        <g-input value="张三"></g-input>
-        <g-input value="李四" disabled></g-input>
-        <g-input value="王五" :readonly="true"></g-input>
-      </div>
-      <div class="box">
-        <g-input value="张" error="姓名不少于两个字"></g-input>
-      </div>
-      <div class="box">
-        <g-button :loading="loading1" v-on:click="loading1 = !loading1; showToast()">按钮</g-button>
-        <g-button icon="settings" icon-position="left" :loading="loading2" @click="loading2 = !loading2">按钮</g-button>
-        <g-button icon="settings" icon-position="right" :loading="loading3" @click="loading3 = !loading3">按钮</g-button>
-        <g-button-group>
-          <g-button icon="left" icon-position="left">下一页</g-button>
-          <g-button>更多</g-button>
-          <g-button icon="right" icon-position="right">上一页</g-button>
-        </g-button-group>
-      </div>
+      <g-tabs selected.sync="selectTab">
+        <g-tabs-head>
+          <g-tabs-item name="pig">
+            <g-icon name="settings"></g-icon>猪
+          </g-tabs-item>
+          <g-tabs-item name="mun">牛</g-tabs-item>
+          <g-tabs-item name="sheep">羊</g-tabs-item>
+        </g-tabs-head>
+        <g-tabs-body>
+          <g-tabs-pane name="pig">20$</g-tabs-pane>
+          <g-tabs-pane name="mun">30$</g-tabs-pane>
+          <g-tabs-pane name="sheep">10$</g-tabs-pane>
+        </g-tabs-body>
+        <template slot="actions">
+          <g-button>actions</g-button>
+        </template>
+      </g-tabs>
+      <g-input></g-input>
     </div>
-
     <script src="./src/app.js"></script>
 </body>
 

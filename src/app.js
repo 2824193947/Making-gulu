@@ -11,6 +11,11 @@ import Layout from "./layout";
 import Side from "./side"
 import Header from "./header"
 import plugin from "./plugin";
+import Tabs from './tabs';
+import TabsHead from './tabs-head'
+import TabsItem from './tabs-item'
+import TabsBody from './tabs-body'
+import TabsPane from './tabs-pane'
 
 // 注册全局组件
 Vue.component('g-button', Button)
@@ -24,6 +29,11 @@ Vue.component('g-footer', Footer)
 Vue.component('g-layout', Layout)
 Vue.component('g-header', Header)
 Vue.component('g-side', Side)
+Vue.component('g-tabs', Tabs)
+Vue.component('g-tabs-head', TabsHead)
+Vue.component('g-tabs-item', TabsItem)
+Vue.component('g-tabs-body', TabsBody)
+Vue.component('g-tabs-pane', TabsPane)
 Vue.use(plugin)
 
 new Vue({
@@ -39,7 +49,7 @@ new Vue({
     },
     showToast () {
       this.$toast('点啦点啦点啦点啦',{
-        position: 'bottom',
+        position: 'top',
         autoClose: 1.5
       });
     }

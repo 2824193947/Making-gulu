@@ -68,14 +68,19 @@ describe('Input', () => {
         const vm = new Constructor({}).$mount()
         const callback = sinon.fake()
         vm.$on(item, callback)
-        // 触发input的change事件
+        // 手动创建一个event事件  这些'change', 'input', 'focus', 'blur'
         let event = new Event(item)
+        // 为了兼容v-model,需要传入值,
         Object.defineProperty(event, 'target', {
           value: {value: 'hi'}, enumerable: true
         })
         let inputElement = vm.$el.querySelector('input')
+        // 触发这个事件
         inputElement.dispatchEvent(event)
         expect(callback).to.have.been.calledWith('hi')
+        // 因为我们为了支持v-model, 派发的不是$event, 而是派发了$event.target.value, 所以要判断是否有值,而不是是否有event
+        // calledWith就是去接收const callback = sinon.fake() 这个函数的参数e (e===event)
+        // expect(callback).to.have.been.calledWith(event)
       })
     })
   })
