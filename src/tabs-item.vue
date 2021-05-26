@@ -32,11 +32,7 @@ export default {
   },
   created() {
     this.eventBus.$on('update:selected', (name) => {
-      if (name === this.name) {
-        this.actives = true
-      } else {
-        this.actives = false
-      }
+      this.actives = name === this.name;
     })
   },
   methods: {
@@ -50,7 +46,12 @@ export default {
 <style lang="scss" scoped>
 .tabs-item {
   padding: 0 1em;
+  height: 100%;
+  line-height: 100%;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
   &.active {
     background: pink;
   }
