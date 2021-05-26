@@ -44,6 +44,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$color: blue;
+
 .tabs-item {
   padding: 0 1em;
   height: 100%;
@@ -53,7 +55,8 @@ export default {
   align-items: center;
   cursor: pointer;
   &.active {
-    background: pink;
+    color: $color;
+    font-weight: bold;
   }
 }
 </style>

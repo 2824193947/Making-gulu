@@ -34,7 +34,15 @@ export default {
     }
   },
   mounted () {
-    this.eventBus.$emit('update:selected', this.selected)
+    this.$children.forEach(vm => {
+      if (vm.$options.name === 'tabs-head') {
+        vm.$children.forEach(item => {
+          if (item.$options.name === 'tabs-item' && item.$props.name === this.selected) {
+            this.eventBus.$emit('update:selected', this.selected, item)
+          }
+        })
+      }
+    })
   },
 }
 </script>
