@@ -31,20 +31,22 @@ export default {
     }
   },
   created() {
+    // 事件中心eventBus监听事件
     this.eventBus.$on('update:selected', (name) => {
       this.actives = name === this.name;
     })
   },
   methods: {
     xxx () {
-      this.eventBus.$emit('update:selected', this.name)
+      // eventBus触发事件  传参数 (当前的item名字, 当前item组件对象)
+      this.eventBus.$emit('update:selected', this.name, this)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-$color: blue;
+$color: #3498db;
 
 .tabs-item {
   padding: 0 1em;
@@ -54,9 +56,12 @@ $color: blue;
   display: flex;
   align-items: center;
   cursor: pointer;
+  color: var(--color);
   &.active {
     color: $color;
-    font-weight: bold;
+  }
+  &.tabs-item:hover {
+    color: $color;
   }
 }
 </style>

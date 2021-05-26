@@ -42,7 +42,7 @@ new Vue({
     loading1: false,
     loading2: false,
     loading3: false,
-    selectTab: 'pig'
+    selectTab: 'mun'
   },
   methods: {
     inputChange () {
@@ -53,6 +53,9 @@ new Vue({
         position: 'top',
         autoClose: 1.5
       });
+    },
+    yyy () {
+      console.log('触发yyy')
     }
   }
 })

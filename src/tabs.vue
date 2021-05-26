@@ -34,15 +34,19 @@ export default {
     }
   },
   mounted () {
-    this.$children.forEach(vm => {
-      if (vm.$options.name === 'tabs-head') {
-        vm.$children.forEach(item => {
-          if (item.$options.name === 'tabs-item' && item.$props.name === this.selected) {
-            this.eventBus.$emit('update:selected', this.selected, item)
-          }
-        })
-      }
-    })
+    // 找出当前名字的vm(元素对象)
+    setTimeout(() => {
+      this.$children.forEach(vm => {
+        if (vm.$options.name === 'tabs-head') {
+          vm.$children.forEach(vmChild => {
+            if (vmChild.$options.name === 'tabs-item' && vmChild.$props.name === this.selected) {
+              // 传参 (当前选中的item的名字, 当前名字的vm)
+              this.eventBus.$emit('update:selected', this.selected, vmChild)
+            }
+          })
+        }
+      })
+    }, 100)
   },
 }
 </script>
