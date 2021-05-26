@@ -1,5 +1,5 @@
 <template>
-<div class="tabs-item" @click="xxx" :class="classes">
+<div class="tabs-item" @click="Onclick" :class="classes">
   <slot></slot>
 </div>
 </template>
@@ -14,7 +14,7 @@ export default {
     }
   },
   props: {
-    disabledButton: {
+    disabled: {
       type: Boolean,
       default: false
     },
@@ -26,7 +26,8 @@ export default {
   computed: {
     classes () {
       return {
-        active: this.actives
+        active: this.actives,
+        disabled: this.disabled
       }
     }
   },
@@ -37,7 +38,8 @@ export default {
     })
   },
   methods: {
-    xxx () {
+    Onclick () {
+      if (this.disabled) return
       // eventBus触发事件  传参数 (当前的item名字, 当前item组件对象)
       this.eventBus.$emit('update:selected', this.name, this)
     }
@@ -64,6 +66,13 @@ $color: #666;
   }
   &.tabs-item:hover {
     color: $on-color;
+  }
+  &.disabled {
+    color: #bbb;
+    cursor: not-allowed;
+    &.tabs-item:hover {
+      color: #bbb;
+    }
   }
 }
 </style>
