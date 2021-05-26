@@ -46,7 +46,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$color: #3498db;
+$on-color: #3498db;
+$color: #666;
 
 .tabs-item {
   padding: 0 1em;
@@ -56,12 +57,13 @@ $color: #3498db;
   display: flex;
   align-items: center;
   cursor: pointer;
-  color: var(--color);
+  color: $color;
+  font-weight: bold;
   &.active {
-    color: $color;
+    color: $on-color;
   }
   &.tabs-item:hover {
-    color: $color;
+    color: $on-color;
   }
 }
 </style>

@@ -28,7 +28,7 @@ export default {
 
 <style lang="scss" scoped>
 $tab-height: 40px;
-
+$border-color: #ddd;
 .tabs-header {
   position: relative;
   display: flex;
@@ -40,7 +40,7 @@ $tab-height: 40px;
     bottom: 0;
     height: 2px;
     width: 100%;
-    background: var(--button-active-bgc);
+    background: $border-color;
     .line {
       position: absolute;
       bottom: 0;
