@@ -1,11 +1,12 @@
 <template>
 <div class="tabs">
   <slot></slot>
-  <slot name="actions"></slot>
 </div>
 </template>
 
 <script>
+import Vue from "vue";
+
 export default {
   name: "g-tabs",
   props: {
@@ -22,9 +23,19 @@ export default {
       }
     }
   },
-  created () {
-    this.$emit('update:selected', this.selected)
-  }
+  data () {
+    return {
+      eventBus: new Vue()
+    }
+  },
+  provide () {
+    return {
+      eventBus: this.eventBus
+    }
+  },
+  mounted () {
+    this.eventBus.$emit('update:selected', this.selected)
+  },
 }
 </script>
 
