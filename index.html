@@ -38,23 +38,14 @@
 
 <body>
     <div id="app">
-      <g-tabs :selected.sync="selectTab" @update:selected="yyy">
-        <g-tabs-head>
-          <g-tabs-item name="pig">
-            <g-icon name="settings"></g-icon>猪111
-          </g-tabs-item>
-          <g-tabs-item name="mun">牛22222</g-tabs-item>
-          <g-tabs-item name="sheep">羊3333333333</g-tabs-item>
-          <template slot="actions">
-            <g-button>actions</g-button>
-          </template>
-        </g-tabs-head>
-        <g-tabs-body>
-          <g-tabs-pane name="pig">20$</g-tabs-pane>
-          <g-tabs-pane name="mun">30$</g-tabs-pane>
-          <g-tabs-pane name="sheep">10$</g-tabs-pane>
-        </g-tabs-body>
-      </g-tabs>
+
+      <g-popover style="position: relative; top: 100px; left: 100px;">
+        <template slot="content">
+          <div>来来来来</div>
+        </template>
+        <g-button>点老子</g-button>
+      </g-popover>
+
     </div>
     <script src="./src/app.js"></script>
 </body>
