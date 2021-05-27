@@ -1,5 +1,5 @@
 <template>
-<div class="tabs-item" @click="Onclick" :class="classes">
+<div class="tabs-item" @click="Onclick" :class="classes" :data-name="name">
   <slot></slot>
 </div>
 </template>
@@ -32,16 +32,20 @@ export default {
     }
   },
   created() {
-    // 事件中心eventBus监听事件
-    this.eventBus.$on('update:selected', (name) => {
-      this.actives = name === this.name;
-    })
+    if (this.eventBus) {
+      // 事件中心eventBus监听事件
+      this.eventBus.$on('update:selected', (name) => {
+        this.actives = name === this.name;
+      })
+    }
   },
   methods: {
     Onclick () {
       if (this.disabled) return
       // eventBus触发事件  传参数 (当前的item名字, 当前item组件对象)
-      this.eventBus.$emit('update:selected', this.name, this)
+      this.eventBus && this.eventBus.$emit('update:selected', this.name, this)
+      // 为了代码可以测试, 因为测试时, 触发组件click事件, 他无法监听原生事件
+      this.$emit('click')
     }
   }
 }

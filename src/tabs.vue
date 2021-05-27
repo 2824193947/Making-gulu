@@ -1,5 +1,5 @@
 <template>
-<div class="tabs">
+<div class="tabs" :class="direction">
   <slot></slot>
 </div>
 </template>
@@ -18,6 +18,7 @@ export default {
     // 方向
     direction: {
       type: String,
+      default: 'level',
       validator (value) {
         return ['level', 'vertical'].indexOf(value) > -1
       }
@@ -34,19 +35,20 @@ export default {
     }
   },
   mounted () {
+    if (this.$children.length === 0) {
+      console && console.warn && console.warn('tabs的组件应该是"tab-head"和"tabs-body", 但是你没有写子组件')
+    }
     // 找出当前名字的vm(元素对象)
-    setTimeout(() => {
-      this.$children.forEach(vm => {
-        if (vm.$options.name === 'tabs-head') {
-          vm.$children.forEach(vmChild => {
-            if (vmChild.$options.name === 'tabs-item' && vmChild.$props.name === this.selected) {
-              // 传参 (当前选中的item的名字, 当前名字的vm)
-              this.eventBus.$emit('update:selected', this.selected, vmChild)
-            }
-          })
-        }
-      })
-    }, 100)
+    this.$children.forEach(vm => {
+      if (vm.$options.name === 'tabs-head') {
+        vm.$children.forEach(vmChild => {
+          if (vmChild.$options.name === 'tabs-item' && vmChild.$props.name === this.selected) {
+            // 传参 (当前选中的item的名字, 当前名字的vm)
+            this.eventBus.$emit('update:selected', this.selected, vmChild)
+          }
+        })
+      }
+    })
   },
 }
 </script>
