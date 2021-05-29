@@ -47,9 +47,6 @@ new Vue({
     selectTab: 'mun'
   },
   methods: {
-    inputChange () {
-      console.log(1)
-    },
     showToast () {
       this.$toast('点啦点啦点啦点啦',{
         position: 'top',
