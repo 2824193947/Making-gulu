@@ -28,8 +28,9 @@ export default {
       this.$refs.contentWrapper.style.top = `${top + window.scrollY}px`
     },
     onClickDocument (e) {
-      // 判断 popover存在 && 点击的是popover && 点击的是 popover 内部
-      if (this.$refs.contentWrapper.contains(e.target)) { return }
+      if (this.$refs.contentWrapper && (this.$refs.contentWrapper === e.target || this.$refs.contentWrapper.contains(e.target))) {
+        return
+      }
       this.close()
     },
     open () {
@@ -60,16 +61,46 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$border-color: #333;
+$border-radius: 4px;
+
+.content-wrapper {
+  position: absolute;
+  transform: translateY(-100%);
+  padding: 0.5em 1em;
+  margin-top: -10px;
+  max-width: 20em;
+  word-break: break-all;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  //box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  // 解决小三角没有阴影
+  filter: drop-shadow(0 1.5px 2px rgba(0, 0, 0, 0.5));
+  background: white;
+
+  &::before, &::after {
+    position: absolute;
+    left: 10px;
+    content: '';
+    border: 10px solid transparent;
+    width: 0;
+    height: 0;
+  }
+
+  &::before {
+    top: 100%;
+    border-top: 10px solid $border-color;
+  }
+
+  &::after {
+    top: calc(100% - 1px);
+    border-top: 9px solid white;
+  }
+}
+
 .popover {
   display: inline-block;
   vertical-align: top;
   position: relative;
-}
-
-.content-wrapper {
-  position: absolute;
-  border: 1px solid red;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-  transform: translateY(-100%);
 }
 </style>
