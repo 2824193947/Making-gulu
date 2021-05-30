@@ -36,15 +36,15 @@ export default {
       this.visible = true
       setTimeout(() => {
         this.positionContent()
-        console.log('创建事件')
+        // console.log('创建事件')
         document.addEventListener('click', this.onClickDocument)
       }, 10)
     },
     close () {
       this.visible = false
-      console.log('删除事件')
+      // console.log('删除事件')
       document.removeEventListener('click', this.onClickDocument)
-      console.log('关闭')
+      // console.log('关闭')
     },
     Onclick(e) {
       if (this.$refs.trigger.contains(e.target)) {
