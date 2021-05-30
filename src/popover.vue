@@ -32,22 +32,28 @@ export default {
       // 1.将弹出框添加到body
       document.body.appendChild(this.$refs.contentWrapperRef)
       const { contentWrapperRef, triggerRef } = this.$refs
-      // 2.获取trigger信息, 给弹出popover定位
-      let {left, top, height, width} = triggerRef.getBoundingClientRect()
-      let {height: height2} = this.$refs.contentWrapperRef.getBoundingClientRect()
-      if (this.position === 'top') {
-        contentWrapperRef.style.left = `${left + window.scrollX}px`
-        contentWrapperRef.style.top = `${top + window.scrollY}px`
-      }else if (this.position === 'bottom') {
-        contentWrapperRef.style.left = `${left + window.scrollX}px`
-        contentWrapperRef.style.top = `${top + height + window.scrollY}px`
-      }else if (this.position === 'left') {
-        contentWrapperRef.style.left = `${left + window.scrollX}px`
-        contentWrapperRef.style.top = `${top + (height - height2) / 2 + window.scrollY}px`
-      }else if (this.position === 'right') {
-        contentWrapperRef.style.left = `${left + width + window.scrollX}px`
-        contentWrapperRef.style.top = `${top + (height - height2) / 2 + window.scrollY}px`
+      const {height: height2} = this.$refs.contentWrapperRef.getBoundingClientRect()
+      const {left, top, height, width} = triggerRef.getBoundingClientRect()
+      let positions = {
+        top: {
+          left: left + window.scrollX,
+          top: top + window.scrollY
+        },
+        bottom: {
+          left: left + window.scrollX,
+          top: top + height + window.scrollY
+        },
+        left: {
+          left: left + window.scrollX,
+          top: top + (height - height2) / 2 + window.scrollY
+        },
+        right: {
+          left: left + width + window.scrollX,
+          top: top + (height - height2) / 2 + window.scrollY
+        }
       }
+      contentWrapperRef.style.left = positions[this.position].left + 'px'
+      contentWrapperRef.style.top = positions[this.position].top + 'px'
     },
     onClickDocument (e) {
       if (this.$refs.contentWrapperRef && (this.$refs.contentWrapperRef === e.target || this.$refs.contentWrapperRef.contains(e.target))) {
