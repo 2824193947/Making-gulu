@@ -39,7 +39,7 @@
 <body>
     <div style="border: 3px solid blue; width: 100%; height: 300px;" @click="yyy">
     <div id="app">
-      <g-popover style="position: relative; top: 100px; left: 100px;">
+      <g-popover style="position: relative; top: 100px; left: 100px;" position="bottom">
         <template slot="content">
           <div>qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq</div>
         </template>
@@ -51,6 +51,18 @@
         </template>
         <g-button>点老子</g-button>
       </g-popover>
+      <g-popover style="position: relative; top: 100px; left: 100px;" position="left">
+      <template slot="content">
+        <div>来来来来</div>
+      </template>
+      <g-button>点老子</g-button>
+    </g-popover>
+      <g-popover style="position: relative; top: 100px; left: 100px;" position="right">
+      <template slot="content">
+        <div>来来来来</div>
+      </template>
+      <g-button>点老子</g-button>
+    </g-popover>
       </div>
     </div>
     <script src="./src/app.js"></script>
