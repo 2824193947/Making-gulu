@@ -2,70 +2,97 @@
 <html lang="zh-Hans">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>轱辘</title>
-    <style>
-        /*页面样式*/
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>轱辘</title>
+  <style>
+    /*页面样式*/
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-         :root {
-            --button-height: 32px;
-            --font-size: 14px;
-            --button-bg: white;
-            --button-active-bgc: #eee;
-            --border-radius: 4px;
-            --color: #333;
-            --border-color: #999;
-            --boeder-color-hover: #666;
-        }
+    :root {
+      --button-height: 32px;
+      --font-size: 14px;
+      --button-bg: white;
+      --button-active-bgc: #eee;
+      --border-radius: 4px;
+      --color: #333;
+      --border-color: #999;
+      --boeder-color-hover: #666;
+    }
 
-        #app {
-            margin: 0;
-        }
+    #app {
+      margin: 0;
+    }
 
-        body {
-            font-size: var(--font-size);
-        }
-    </style>
+    body {
+      font-size: var(--font-size);
+    }
+  </style>
 </head>
 
 <body>
-    <div style="border: 3px solid blue; width: 100%; height: 300px;" @click="yyy">
-    <div id="app">
-      <g-popover style="position: relative; top: 100px; left: 100px;" position="bottom">
+  <div id="app">
+    <div style="padding: 200px 200px">
+      <g-popover position="bottom">
         <template slot="content">
-          <div>qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq</div>
+          <div>qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq</div>
         </template>
         <g-button>点老子</g-button>
       </g-popover>
-      <g-popover style="position: relative; top: 100px; left: 100px;">
+      <g-popover position="left">
         <template slot="content">
           <div>来来来来</div>
         </template>
         <g-button>点老子</g-button>
       </g-popover>
-      <g-popover style="position: relative; top: 100px; left: 100px;" position="left">
-      <template slot="content">
-        <div>来来来来</div>
-      </template>
-      <g-button>点老子</g-button>
-    </g-popover>
-      <g-popover style="position: relative; top: 100px; left: 100px;" position="right">
-      <template slot="content">
-        <div>来来来来</div>
-      </template>
-      <g-button>点老子</g-button>
-    </g-popover>
-      </div>
+      <g-popover position="right">
+        <template slot="content">
+          <div>来来来来</div>
+        </template>
+        <g-button>点老子</g-button>
+      </g-popover>
+      <g-popover>
+        <template slot="content">
+          <div>来来来来</div>
+        </template>
+        <g-button>点老子</g-button>
+      </g-popover>
     </div>
-    <script src="./src/app.js"></script>
+    <div style="padding: 20px 200px">
+      <g-popover position="bottom" trigger="hover">
+        <template slot="content">
+          <div>qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq</div>
+        </template>
+        <g-button>点老子</g-button>
+      </g-popover>
+      <g-popover position="left" trigger="hover">
+        <template slot="content">
+          <div>来来来来</div>
+        </template>
+        <g-button>点老子</g-button>
+      </g-popover>
+      <g-popover position="right" trigger="hover">
+        <template slot="content">
+          <div>来来来来</div>
+        </template>
+        <g-button>点老子</g-button>
+      </g-popover>
+      <g-popover position="top" trigger="hover">
+        <template slot="content">
+          <div>来来来来</div>
+        </template>
+        <g-button>点老子</g-button>
+      </g-popover>
+    </div>
+  </div>
+<script src="./src/app.js"></script>
 </body>
 
 </html>

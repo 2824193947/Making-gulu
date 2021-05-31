@@ -1,5 +1,5 @@
 <template>
-  <div class="popover" @click="Onclick">
+  <div class="popover" ref="popoverRef">
     <div ref="contentWrapperRef" class="content-wrapper" :class="`position-${position}`" v-if="visible">
       <slot name="content"></slot>
     </div>
@@ -24,6 +24,29 @@ export default {
       validator (value) {
         return ['top', 'bottom', 'left', 'right'].indexOf(value) > -1
       }
+    },
+    trigger: {
+      type: String,
+      default: 'click',
+      validator(value) {
+        return ['click', 'hover'].indexOf(value) > -1
+      }
+    }
+  },
+  mounted () {
+    if (this.trigger === 'click') {
+      this.$refs.popoverRef.addEventListener('click', this.onClick)
+    } else {
+      this.$refs.popoverRef.addEventListener('mouseenter', this.open)
+      this.$refs.popoverRef.addEventListener('mouseleave', this.close)
+    }
+  },
+  destroyed () {
+    if (this.trigger === 'click') {
+      this.$refs.popoverRef.removeEventListener('click', this.onClick)
+    } else {
+      this.$refs.popoverRef.removeEventListener('mouseenter', this.open)
+      this.$refs.popoverRef.removeEventListener('mouseleave', this.close)
     }
   },
   methods: {
@@ -67,7 +90,7 @@ export default {
         this.positionContent()
         // console.log('创建事件')
         document.addEventListener('click', this.onClickDocument)
-      }, 10)
+      })
     },
     close () {
       this.visible = false
@@ -75,7 +98,7 @@ export default {
       document.removeEventListener('click', this.onClickDocument)
       // console.log('关闭')
     },
-    Onclick(e) {
+    onClick (e) {
       if (this.$refs.triggerRef.contains(e.target)) {
         if (this.visible === true) {
           this.close()
