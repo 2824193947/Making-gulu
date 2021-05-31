@@ -41,10 +41,11 @@
   <div id="app">
     <div style="padding: 200px 200px">
       <g-popover position="bottom">
-        <template slot="content">
+        <template v-slot:content="{close}">
           <div>qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq</div>
+          <g-button @click="close">点老子</g-button>
         </template>
-        <g-button>点老子</g-button>
+        <g-button >点老子</g-button>
       </g-popover>
       <g-popover position="left">
         <template slot="content">

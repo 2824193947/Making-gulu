@@ -1,7 +1,7 @@
 <template>
   <div class="popover" ref="popoverRef">
     <div ref="contentWrapperRef" class="content-wrapper" :class="`position-${position}`" v-if="visible">
-      <slot name="content"></slot>
+      <slot name="content" :close="close"></slot>
     </div>
     <div ref="triggerRef">
       <slot></slot>
@@ -140,12 +140,14 @@ $border-radius: 4px;
 
     &::before {
       top: calc(100% + 1px);
-      border-top: 10px solid $border-color;
+      border-bottom: none;
+      border-top-color: $border-color;
     }
 
     &::after {
       top: 100%;
-      border-top: 10px solid white;
+      border-bottom: none;
+      border-top-color: white;
     }
   }
   &.position-bottom{
@@ -161,12 +163,14 @@ $border-radius: 4px;
 
     &::before {
       bottom: calc(100% + 1px);
+      border-top: none;
       border-bottom: 10px solid $border-color;
     }
 
     &::after {
       bottom: 100% ;
-      border-bottom: 10px solid white;
+      border-top: none;
+      border-bottom-color: white;
     }
   }
   &.position-left{
@@ -174,7 +178,7 @@ $border-radius: 4px;
     margin-left: -10px;
     &::before, &::after {
       position: absolute;
-      left: 100%;
+      left: calc(100% - 1px);
       top: 50%;
       transform: translateY(-50%);
       content: '';
@@ -183,11 +187,13 @@ $border-radius: 4px;
 
     &::before {
       left: calc(100% + 1px);
-      border-left: 10px solid $border-color;
+      border-right: none;
+      border-left-color: $border-color;
     }
 
     &::after {
-      border-left: 10px solid white;
+      border-right: none;
+      border-left-color: white;
     }
   }
   &.position-right{
@@ -203,11 +209,13 @@ $border-radius: 4px;
 
     &::before {
       right: calc(100% + 1px);
-      border-right: 10px solid $border-color;
+      border-right-color: $border-color;
+      border-left: none;
     }
 
     &::after {
-      border-right: 10px solid white;
+      border-right-color: white;
+      border-left: none;
     }
   }
 }
