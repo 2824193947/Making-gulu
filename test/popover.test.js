@@ -30,9 +30,9 @@ describe('Popover', () => {
     vm.$nextTick(() => {
       const {contentWrapperRef} = vm.$refs.a.$refs
       expect(contentWrapperRef.classList.contains('position-bottom')).to.be.true
-      done()
       vm.$el.remove()
       vm.$destroy()
+      done()
     })
   })
   it('可以设置 trigger', (done) => {
@@ -57,8 +57,6 @@ describe('Popover', () => {
         const {contentWrapper} = vm.$refs.a.$refs
         expect(contentWrapper).to.exist
         done()
-        vm.$el.remove()
-        vm.$destroy()
       })
     }, 200)
 

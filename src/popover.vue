@@ -1,8 +1,10 @@
 <template>
   <div class="popover" ref="popoverRef">
+    <transition name="fade">
     <div ref="contentWrapperRef" class="content-wrapper" :class="`position-${position}`" v-if="visible">
       <slot name="content" :close="close"></slot>
     </div>
+    </transition>
     <div ref="triggerRef">
       <slot></slot>
     </div>
@@ -41,14 +43,15 @@ export default {
       this.$refs.popoverRef.addEventListener('mouseleave', this.close)
     }
   },
-  destroyed () {
-    if (this.trigger === 'click') {
-      this.$refs.popoverRef.removeEventListener('click', this.onClick)
-    } else {
-      this.$refs.popoverRef.removeEventListener('mouseenter', this.open)
-      this.$refs.popoverRef.removeEventListener('mouseleave', this.close)
-    }
-  },
+  // 这里报错需要优化
+  // destroyed () {
+  //   if (this.$refs.popoverRef.removeEventListener) {
+  //     this.$refs.popoverRef.removeEventListener('click', this.onClick)
+  //   } else {
+  //     this.$refs.popoverRef.removeEventListener('mouseenter', this.open)
+  //     this.$refs.popoverRef.removeEventListener('mouseleave', this.close)
+  //   }
+  // },
   methods: {
     // 1.内容定位
     positionContent () {
@@ -114,6 +117,13 @@ export default {
 <style lang="scss" scoped>
 $border-color: #333;
 $border-radius: 4px;
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 
 .content-wrapper {
   position: absolute;
