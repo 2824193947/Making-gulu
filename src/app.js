@@ -45,10 +45,7 @@ Vue.use(plugin)
 new Vue({
   el: '#app',
   data: {
-    loading1: false,
-    loading2: false,
-    loading3: false,
-    selectTab: 'mun'
+    selectTab: '2'
   },
   methods: {
     showToast () {
