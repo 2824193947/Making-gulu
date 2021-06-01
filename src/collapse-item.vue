@@ -1,9 +1,9 @@
 <template>
   <div class="collapseItem">
-    <div class="title" @click="toggle">
+    <div class="title" @click="toggle" :data-name="name">
       {{title}}
     </div>
-    <div class="content" v-show="open">
+    <div class="content" ref="content" v-if="open">
       <slot></slot>
     </div>
   </div>
@@ -69,6 +69,7 @@ $border-radius: 4px;
     padding-left: 8px;
     display: flex;
     align-items: center;
+    background: lighten($grey, 8%);
   }
   &:first-child{
     > .title {
