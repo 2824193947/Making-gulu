@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import Icon from './icon'
 import './svg.js'
 
@@ -48,6 +47,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$button-height: 32px;
+$font-size: 14px;
+$button-bg: white;
+$button-active-bgc: #eee;
+$border-radius: 4px;
+$color: #333;
+$border-color: #999;
+$border-color-hover: #666;
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -58,21 +66,21 @@ export default {
 }
 /*按钮样式*/
 .g-button {
-  font-size: var(--font-size);
-  height: var(--button-height);
+  font-size: $font-size;
+  height: $button-height;
   padding: 0 1em; /*按钮左右一个字的宽度*/
-  border-radius: var(--border-radius);
-  border: 1px solid var(--border-color);
-  background: var(--button-bg);
+  border-radius: $border-radius;
+  border: 1px solid $border-color;
+  background: $button-bg;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   vertical-align: middle;
   &:hover {
-    border-color: var(--boeder-color-hover);
+    border-color: $border-color-hover;
   }
   &:active {
-    background-color: var(--button-active-bgc);
+    background-color: $button-active-bgc;
   }
   &:focus {
     outline: none;
