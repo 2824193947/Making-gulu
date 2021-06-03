@@ -1,4 +1,5 @@
 module.exports = {
+  base: '/Making-gulu/',
   title: '轱辘UI',
   description: '一个简约的UI框架',
   themeConfig: {

@@ -54,7 +54,7 @@ new Vue({
         autoClose: 1.5
       });
     },
-    yyy () {
+    show () {
       console.log('触发yyy')
     }
   }

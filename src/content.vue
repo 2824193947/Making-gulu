@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="wrapper">
     <slot></slot>
   </div>
 </template>
@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style scoped>
-.content {
+.wrapper {
   flex-grow: 1;
 }
 </style>

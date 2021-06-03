@@ -1,7 +1,9 @@
 ---
-sidebarDepth: 2
+title: Button
 ---
 
 # Button
 
-<button-demos></button-demos>
+<ClientOnly>
+  <button-demos></button-demos>
+</ClientOnly>

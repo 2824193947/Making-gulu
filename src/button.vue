@@ -12,7 +12,7 @@
         v-if="loading"
     >
     </g-icon>
-    <div class="content">
+    <div class="wrapper">
       <slot></slot>
     </div>
   </button>
@@ -90,7 +90,7 @@ $border-color-hover: #666;
     margin-right: .1em;
     margin-left: 0;
   }
-  > .content {
+  > .wrapper {
     order: 2;
   }
   &.icon-right {
@@ -99,7 +99,7 @@ $border-color-hover: #666;
       margin-left: .1em;
       margin-right: 0;
     }
-    > .content {
+    > .wrapper {
       order: 1;
     }
   }
