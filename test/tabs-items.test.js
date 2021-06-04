@@ -1,10 +1,10 @@
 
 import Vue from 'vue'
-import Tabs from '../src/tabs'
-import TabsHead from '../src/tabs-head'
-import TabsItem from '../src/tabs-item'
-import TabsBody from '../src/tabs-body'
-import TabsPane from '../src/tabs-pane'
+import Tabs from '../src/tabs/tabs'
+import TabsHead from '../src/tabs/tabs-head'
+import TabsItem from '../src/tabs/tabs-item'
+import TabsBody from '../src/tabs/tabs-body'
+import TabsPane from '../src/tabs/tabs-pane'
 Vue.component('g-tabs', Tabs)
 Vue.component('g-tabs-head', TabsHead)
 Vue.component('g-tabs-item', TabsItem)

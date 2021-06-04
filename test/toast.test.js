@@ -1,4 +1,4 @@
-import Row from "../src/row";
+import Row from "../src/grid/row";
 
 const expect = chai.expect;
 import Vue from 'vue'

@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import Icon from './icon'
-import './svg.js'
+import Icon from '../icon'
+import '../svg.js'
 
 export default {
   components: {
