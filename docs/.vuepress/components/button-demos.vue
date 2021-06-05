@@ -55,6 +55,9 @@ export default {
 </script>
 
 <style scoped>
+* {
+  box-sizing: border-box;
+}
 .wrapper1 {
   margin-bottom: 10px;
 }
