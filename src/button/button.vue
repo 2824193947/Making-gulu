@@ -30,10 +30,12 @@ export default {
   // 图标 图标位置
   props: {
     icon: {},
+    // loading状态
     loading:{
       type: Boolean,
       default: false
     },
+    // icon位置
     iconPosition: {
       type: String,
       default: 'left',

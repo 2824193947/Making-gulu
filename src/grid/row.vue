@@ -8,8 +8,9 @@
 export default {
   name: "g-row",
   props: {
+    // 默认的空隙
     gutter: {
-      type: [Number, String]
+      type: Number
     },
     align: {
       type: String,
