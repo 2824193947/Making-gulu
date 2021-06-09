@@ -7,7 +7,7 @@
            @blur="$emit('blur', $event.target.value)"
     >
     <template v-if="error">
-      <icon name="error" class="icon-error"></icon>
+      <g-icon name="error" class="icon-error"></g-icon>
       <span class="errorMessage">{{ error }}</span>
     </template>
   </div>
@@ -19,7 +19,7 @@ import Icon from './icon'
 export default {
   name: "g-input",
   components: {
-    'icon': Icon
+    'g-icon': Icon
   },
   props: {
     value: {
@@ -34,6 +34,7 @@ export default {
       type: Boolean,
       default: false
     },
+    // 错误信息
     error: {
       type: String
     }
