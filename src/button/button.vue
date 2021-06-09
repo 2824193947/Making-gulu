@@ -20,7 +20,6 @@
 
 <script>
 import Icon from '../icon'
-import '../svg.js'
 
 export default {
   components: {
