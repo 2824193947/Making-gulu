@@ -15,14 +15,20 @@ export default {
   name: "tabs-head",
   inject: ['eventBus'],
   mounted () {
-    this.eventBus.$on('update:selected', (itemName, vm) =>{
+    this.eventBus.$on('update:selected', (itemName, itemVm) =>{
       this.$nextTick(() => {
-        let {width, left} = vm.$el.getBoundingClientRect()
-        this.$refs.lineRef.style.width = `${width}px`
-        this.$refs.lineRef.style.left = `${left}px`
+        this.computedLeft(itemVm)
       })
     })
   },
+  methods: {
+    computedLeft (itemVm) {
+      let {width, left} = itemVm.$el.getBoundingClientRect()
+      let { left: left2 } = this.$el.getBoundingClientRect()
+      this.$refs.lineRef.style.width = `${width}px`
+      this.$refs.lineRef.style.left = `${left - left2}px`
+    }
+  }
 }
 </script>
 

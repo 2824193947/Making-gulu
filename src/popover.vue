@@ -155,7 +155,7 @@ $border-radius: 4px;
     }
 
     &::after {
-      top: 100%;
+      top: 98%;
       border-bottom: none;
       border-top-color: white;
     }
@@ -210,7 +210,7 @@ $border-radius: 4px;
     margin-left: 10px;
     &::before, &::after {
       position: absolute;
-      right: 100%;
+      right: 99%;
       top: 50%;
       transform: translateY(-50%);
       content: '';
