@@ -19,6 +19,7 @@ module.exports = {
           '/components/tabs',
           '/components/toast'
         ],
+        collapsable: false
       }
 
     ]
