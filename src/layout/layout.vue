@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "layout",
+  name: "g-layout",
   data () {
     return {
       layoutClass: { hasSider: false }
