@@ -43,16 +43,25 @@ export default {
       this.$refs.popoverRef.addEventListener('mouseleave', this.close)
     }
   },
-  // 这里报错需要优化
-  // destroyed () {
-  //   if (this.$refs.popoverRef.removeEventListener) {
-  //     this.$refs.popoverRef.removeEventListener('click', this.onClick)
-  //   } else {
-  //     this.$refs.popoverRef.removeEventListener('mouseenter', this.open)
-  //     this.$refs.popoverRef.removeEventListener('mouseleave', this.close)
-  //   }
-  // },
+  beforeDestroy () {
+    this.putBackContent()
+    // 判断删除监听事件
+    if (this.trigger === 'click') {
+      this.$refs.popoverRef.removeEventListener('click', this.onClick)
+      console.log('Destroy 执行')
+    } else {
+      this.$refs.popoverRef.removeEventListener('mouseenter', this.open)
+      this.$refs.popoverRef.removeEventListener('mouseleave', this.close)
+    }
+  },
   methods: {
+    // 点击切换路由时, 出现无法移除dom的情况, 将它填回原来的位置隐藏, 解决问题, 但是不知道为什么出现这个情况
+    putBackContent () {
+      const {contentWrapperRef, popoverRef} = this.$refs
+      if(!contentWrapperRef){return}
+      popoverRef.appendChild(contentWrapperRef)
+      // console.log(popoverRef)
+    },
     // 1.内容定位
     positionContent () {
       // 1.将弹出框添加到body
@@ -81,26 +90,27 @@ export default {
       contentWrapperRef.style.left = positions[this.position].left + 'px'
       contentWrapperRef.style.top = positions[this.position].top + 'px'
     },
+    // 点击弹出框
     onClickDocument (e) {
       if (this.$refs.contentWrapperRef && (this.$refs.contentWrapperRef === e.target || this.$refs.contentWrapperRef.contains(e.target))) {
         return
       }
       this.close()
     },
+    // 显示
     open () {
       this.visible = true
       setTimeout(() => {
         this.positionContent()
-        // console.log('创建事件')
         document.addEventListener('click', this.onClickDocument)
       })
     },
+    // 关闭
     close () {
       this.visible = false
-      // console.log('删除事件')
       document.removeEventListener('click', this.onClickDocument)
-      // console.log('关闭')
     },
+    // 点击触发事件
     onClick (e) {
       if (this.$refs.triggerRef.contains(e.target)) {
         if (this.visible === true) {
@@ -196,7 +206,7 @@ $border-radius: 4px;
     }
 
     &::before {
-      left: calc(100% + 1px);
+      left: 100%;
       border-right: none;
       border-left-color: $border-color;
     }
@@ -210,7 +220,7 @@ $border-radius: 4px;
     margin-left: 10px;
     &::before, &::after {
       position: absolute;
-      right: 99%;
+      right: 100%;
       top: 50%;
       transform: translateY(-50%);
       content: '';
