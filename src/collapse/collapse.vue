@@ -53,7 +53,6 @@ export default {
       }
       let index = selectedCopy.indexOf(name)
       selectedCopy.splice(index, 1)
-      console.log(selectedCopy)
       // 实现传入是变量时, 需要是响应式的, 所以派发事件, props变为响应式
       this.$emit('update:selected', selectedCopy)
       this.eventBus.$emit('update:selected', selectedCopy)
