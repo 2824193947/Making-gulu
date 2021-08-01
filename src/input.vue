@@ -43,13 +43,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$height: 32px;
-$border-color: #999;
-$border-color-hover: #666;
-$font-size: 14px;
-$border-radius: 4px;
-$box-shadow-color: rgba(0, 0, 0, 0.5);
-$red: #F1453D;
+@import "common/css/var";
+
 .wrapper {
   display: inline-flex;
   align-items: center;
@@ -64,7 +59,7 @@ $red: #F1453D;
   }
 
   > input {
-    height: $height;
+    height: $input-height;
     border: 1px solid $border-color;
     border-radius: $border-radius;
     padding: 0 8px;
