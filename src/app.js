@@ -19,6 +19,7 @@ import TabsPane from './tabs/tabs-pane'
 import Popover from './popover'
 import Collapse from "./collapse/collapse"
 import CollapseItem from "./collapse/collapse-item"
+import Cascader from "./cascader"
 
 // 注册全局组件
 Vue.component('g-button', Button)
@@ -40,22 +41,36 @@ Vue.component('g-tabs-pane', TabsPane)
 Vue.component('g-popover', Popover)
 Vue.component('g-collapse', Collapse)
 Vue.component('g-collapse-item', CollapseItem)
+Vue.component('g-cascader', Cascader)
 Vue.use(plugin)
 
 new Vue({
   el: '#app',
   data: {
-    selectTab: ['2']
-  },
-  methods: {
-    showToast () {
-      this.$toast('点啦点啦点啦点啦',{
-        position: 'top',
-        autoClose: 1.5
-      });
+    source: [
+      {
+        name: "浙江",
+        children: [
+          {name: "杭州"},
+          {name: "嘉信"},
+          {name: "呼市"},
+        ]
+      },
+      {
+        name: "内蒙古",
+        children: [
+          {name: "呼和浩特"},
+          {name: "巴盟"},
+          {
+            name: "武川",
+            children: [
+              {name: "哈乐"},
+              {name: "哈乐"}
+            ]
+          },
+        ]
+      }]
     },
-    show () {
-      console.log('触发yyy')
-    }
+  methods: {
   }
 })
